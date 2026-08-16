@@ -27,11 +27,21 @@ jobs:
 
       - name: Verify static export
         run: |
-          echo "Checking static Next.js output..."
+          echo "Checking Next.js build output..."
           ls -la
-          test -d out
-          test -f out/index.html
-          echo "Static export OK"
+          echo "Searching for generated index.html..."
+          find . -maxdepth 4 -type f -name "index.html" -print
+          echo "Checking out directory..."
+          if [ -f out/index.html ]; then
+            echo "Static export OK"
+          else
+            echo "ERROR: out/index.html was not generated"
+            echo "Next.js config:"
+            cat next.config.ts
+            echo "Build directory:"
+            ls -la .next
+            exit 1
+          fi
 
       - name: Copy Web UI into Android assets
         run: |

@@ -24,3 +24,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Android generated files
+android/.gradle/
+android/build/
+android/app/build/
+
+# Android generated files
+android/.gradle/
+android/build/
+android/app/build/

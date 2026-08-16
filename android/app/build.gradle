@@ -1,0 +1,16 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.jarvis.hud'
+    compileSdk 29
+
+    defaultConfig {
+        applicationId 'com.jarvis.hud'
+        minSdk 23
+        targetSdk 29
+        versionCode 1
+        versionName '1.0'
+    }
+}

@@ -25,11 +25,19 @@ jobs:
       - name: Build Web UI
         run: npm run build -- --webpack
 
+      - name: Verify static export
+        run: |
+          echo "Checking static Next.js output..."
+          ls -la
+          test -d out
+          test -f out/index.html
+          echo "Static export OK"
+
       - name: Copy Web UI into Android assets
         run: |
           mkdir -p android/app/src/main/assets/web
           rm -rf android/app/src/main/assets/web/*
-          cp -r out/* android/app/src/main/assets/web/
+          cp -r out/. android/app/src/main/assets/web/
 
       - name: Setup Java
         uses: actions/setup-java@v5
